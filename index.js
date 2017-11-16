@@ -27,20 +27,23 @@ app.get("/api/", (req, res) => {
 	});
 });
 
-app.post("/api/", (req, res) => {
-	 var newItem = req.body;
-   pool.create(newItem);
-	 res.send(result.rows);
-	 res.send("SUCCESS");
- });
 
+app.post("/api/", function(req, res) {
+    var shoppinglist = req.body;
+    var insert = "INSERT INTO shoppinglist(item, price, quantity) " +
+            "values($1::text, $2::dec(4,2), $3::int)";
+    var values = [shoppinglist.item, shoppinglist.price, shoppinglist.quantity];
+    pool.query(insert, values).then(function() {
+        res.status(201);
+        res.send("Inserted");
+    });
+});
 
-// DELETE /api/contacts/{ID} - delete an contact from the database. The contact is
-// selected via the {ID} part of the URL.
 app.delete('/api/:id', function(req, res) {
     var id = req.params.id;
-    pool.delete(id);
-    res.send("SUCCESS");
+    pool.query("DELETE FROM shoppinglist WHERE id = $1::int", [id]).then(function() {
+        res.send("SUCCESS");
+    }).catch(errorCallback);
 });
 
 

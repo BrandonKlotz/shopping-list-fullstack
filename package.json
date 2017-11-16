@@ -1,8 +1,8 @@
 {
-  "name": "lab14",
+  "name": "shopping-list-full",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Patrick Sollars <pjsollars@gmail.com>",
+  "author": "Brandon Klotz <brandonklotz@icloud.com",
   "license": "MIT",
   "private": "true",
   "dependencies": {

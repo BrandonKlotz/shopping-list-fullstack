@@ -6,7 +6,8 @@ class AddNewItem extends Component {
 		super(props);
 		this.state = {
 			item: "",
-			price: ""
+			price: "",
+			quantity: ""
 		};
 	}
 
@@ -14,10 +15,13 @@ class AddNewItem extends Component {
 		return (
 			<form onSubmit={this.handleSubmit.bind(this)}>
 					<label>Item
-						<input value={this.state.item} placeholder="Add List Item" onChange={this.handleItem.bind(this)} required/>
+						<input value={this.state.item} placeholder="Add List Item" onChange={this.handleItem.bind(this)} required />
 					</label>
-					<label>Price
-						<input type="number" placeholder="Item Price" value={this.state.price} onChange={this.handlePrice.bind(this)} required/>
+					<label>Item Price
+						<input type="number" placeholder="Item Price" value={this.state.price} onChange={this.handlePrice.bind(this)} required />
+					</label>
+					<label>Quantity
+						<input type="number" placeholder="Item Price" value={this.state.quantity} onChange={this.handleQuantity.bind(this)} required />
 					</label>
 					<button type="submit" className="Submit">Add New Item</button>
 			</form>
@@ -36,17 +40,25 @@ class AddNewItem extends Component {
 		});
 	}
 
+	handleQuantity(event) {
+		this.setState({
+			quantity: event.target.value
+		});
+	}
+
 	handleSubmit(event) {
 		event.preventDefault();
 
 		this.props.onSubmit({
 			item: this.state.item,
-			price: this.state.price
+			price: this.state.price,
+			quantity: this.state.quantity
 		});
 
 		this.setState({
 			item: "",
-			price: ""
+			price: "",
+			quantity: ""
 		});
 	}
 
