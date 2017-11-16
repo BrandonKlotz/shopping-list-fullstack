@@ -1,0 +1,90 @@
+body {
+  margin: 0 auto;
+  padding: 0;
+  font-family: sans-serif;
+  height: 800px;
+  background: #A4DDA8;
+  background: -webkit-linear-gradient(-45deg, #A4DDA8, #C3F2A7);
+  background: -o-linear-gradient(-45deg, #A4DDA8, #C3F2A7);
+  background: -moz-linear-gradient(-45deg, #A4DDA8, #C3F2A7);
+  background: linear-gradient(-45deg, #A4DDA8, #C3F2A7);
+}
+
+.Form {
+  padding: 1em;
+  margin: 0 auto;
+  margin-top: 4em;
+  margin-bottom: 4em;
+  min-width: 400px;
+  width: 60%;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.Content {
+  margin: 0 auto;
+  min-width: 300px;
+  width: 30%;
+}
+
+.Item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: .5em;
+  margin-bottom: 4px;
+  border-radius: 2px;
+  list-style-type: none;
+}
+
+.ItemInfo {
+  text-align: justify;
+}
+
+.Item:hover {
+  background-color: #f2f2f2;
+  box-shadow: 0px 2px 6px #ccc;
+}
+
+input, .Submit {
+  padding: .5em;
+  margin: 1em;
+  margin-top: 2em;
+  width: 140px;
+  border-radius: 1px;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #eee;
+}
+
+.ContactCard__button--delete{
+    background-color: tomato;
+    color: white;
+    border: none;
+    border-radius: 1px;
+}
+
+
+.ContactCard__button--delete:hover{
+    color: tomato;
+    background-color: white;
+    border-color: white;
+    color: tomato;
+    border-radius: 1px;
+}
+
+
+.Submit {
+  background-color: #C3F2A7;
+  color: #fff;
+  border: none;
+}
+
+.Total {
+  border-top: 1px solid #eee;
+  margin-bottom: .25em;
+  text-align: right;
+}

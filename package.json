@@ -1,0 +1,11 @@
+{
+  "name": "lab14",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Patrick Sollars <pjsollars@gmail.com>",
+  "license": "MIT",
+  "private": "true",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
