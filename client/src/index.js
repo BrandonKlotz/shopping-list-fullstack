@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import reducer from './reducers';
-import { fetchShoppingList } from './actions';
+import { fetchItems } from './actions';
 
 // Create the redux store with two middleware
 const store = createStore(
@@ -21,8 +21,8 @@ const store = createStore(
     )
 );
 
-// Trigger the fetchShoppingList "action"
-store.dispatch(fetchShoppingList());
+// Trigger the fetchItems "action"
+store.dispatch(fetchItems());
 
 // Just standard React & Redux stuff here.
 ReactDOM.render(

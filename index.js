@@ -20,15 +20,15 @@ var pool = new pg.Pool({
 
 
 var selectItems = "SELECT * FROM shoppinglist;"
+var grandTotal =  "SELECT SUM(Quantity * Price) FROM shoppinglist;"
 
-app.get("/api/", (req, res) => {
+app.get("/api/items", (req, res) => {
 	pool.query(selectItems).then(function(result) {
 	 res.send(result.rows);
 	});
 });
 
-
-app.post("/api/", function(req, res) {
+app.post("/api/items", function(req, res) {
     var shoppinglist = req.body;
     var insert = "INSERT INTO shoppinglist(item, price, quantity) " +
             "values($1::text, $2::dec(4,2), $3::int)";
@@ -39,10 +39,10 @@ app.post("/api/", function(req, res) {
     });
 });
 
-app.delete('/api/:id', function(req, res) {
+app.delete('/api/items/:id', function(req, res) {
     var id = req.params.id;
     pool.query("DELETE FROM shoppinglist WHERE id = $1::int", [id]).then(function() {
-        res.send("SUCCESS");
+        res.send("Success");
     }).catch(errorCallback);
 });
 

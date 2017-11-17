@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addItemToDatabase } from '../actions';
-import ListItem from "./ListItem";
-import AddNewItem from "./AddNewItem";
+import Item from "./Item";
+import ItemForm from "./ItemForm";
 
 class App extends Component {
 
 	render() {
 
 		const renderShoppingList = this.props.shoppingList.map((item) => (
-			<ListItem key={item.id} item={item}/>
+			<Item key={item.id} item={item}/>
 		));
 
 		function round(value, decimals) {
 			return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 		}
 
-		let CartTotal = 0;
-    this.props.shoppingList.map((item) => { CartTotal += Number(round(item.price, 2))});
+		let sum = 0;
+		const renderSubTotal = this.props.shoppingList.map((item) => (
+			sum += Number(item.price * item.quantity)
+		));
 
-		const itemSubTotal = this.props.item.price * this.props.item.quantity;
+		const renderGrandTotal = sum;
 
 		return (
 			<div className="Form">
@@ -28,17 +30,19 @@ class App extends Component {
 					<div className="Heading">
 						<span><i className="fa fa-check fa-sm"></i></span>
 						<span className="ItemInfo">Item</span>
-						<span className="ItemInfo">Quantity</span>
 						<span className="ItemInfo">Price</span>
+						<span className="ItemInfo">Quantity</span>
 						<span className="ItemInfo">Total</span>
 					</div>
 					<div className="Total"></div>
 					{renderShoppingList}
 				</div>
 				<div className="Total">
-          <h4>Grand Total: <span> ${CartTotal}</span></h4>
+					<h3>
+						Grand Total: $ {renderGrandTotal}
+					</h3>
         </div>
-				<div><AddNewItem onSubmit={this.props.addItemToDatabase}/></div>
+				<div><ItemForm onSubmit={this.props.addItemToDatabase}/></div>
 			</div>
 		);
 	}

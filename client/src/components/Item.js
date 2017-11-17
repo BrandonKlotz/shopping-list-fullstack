@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import { removeItemFromDatabase } from '../actions';
 import "font-awesome/css/font-awesome.css";
 
-class ListItem extends Component {
+class Item extends Component {
 
 
 	render() {
-		
-		const dynamicPrice = this.props.item.price * this.props.item.quantity;
 
 		return (
 
@@ -17,7 +15,7 @@ class ListItem extends Component {
 				<span className="ItemInfo">{this.props.item.item}</span>
 				<span className="ItemInfo">${this.props.item.price}</span>
 				<span className="ItemInfo">{this.props.item.quantity}</span>
-				<span className="ItemInfo">${dynamicPrice}</span>
+				<span className="ItemInfo">${this.props.item.price * this.props.item.quantity}</span>
 			</div>
 		);
 	}
@@ -32,4 +30,4 @@ const mapActionsToProps = {
     removeItemFromDatabase
 };
 
-export default connect(null, mapActionsToProps)(ListItem);
+export default connect(null, mapActionsToProps)(Item);
